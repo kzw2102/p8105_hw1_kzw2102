@@ -15,7 +15,7 @@ library(tidyverse)
 #2. a logical vector indicating whether elements of the sample are greater than 0
 #3. a character vector of length 8
 #4. a factor vector of length 8, with 3 different factor "levels"
-`````{r create dataframe, echo=FALSE}
+`````{r create dataframe}
 problem1_df=tibble(
   x= rnorm(8),
   vec_logic = x>0,
