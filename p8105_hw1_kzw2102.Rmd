@@ -33,4 +33,16 @@ mean(number)
 mean(overzero)
 mean(characters)
 mean(levels)
+
 `````
+We can take the mean values of number, overzero, but not of characters or levels. 
+```{r, eval=FALSE}
+#applying the as.numeric function to the logical, character, and factor variables
+as.numeric(overzero)
+as.numeric(characters)
+as.numeric(levels)
+
+````
+This cannot turn into any of the logical, character, or factor vector.
+
+```
