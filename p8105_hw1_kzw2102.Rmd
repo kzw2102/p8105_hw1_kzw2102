@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Homework 1"
 author: "Kelly Wang"
 date: 2019-09-15
 output: github_document
@@ -10,18 +10,23 @@ output: github_document
 library(tidyverse)
 ````
 
-##Section 1: defining data frame
-#1.creating a random sample of size 8 from a standard normal distribution
-#2. a logical vector indicating whether elements of the sample are greater than 0
-#3. a character vector of length 8
-#4. a factor vector of length 8, with 3 different factor "levels"
+# Problem 1
+
+## creating the data frame
 `````{r create dataframe}
+## 1.creating a random sample of size 8 from a standard normal distribution
+## 2. a logical vector indicating whether elements of the sample are greater than 0
+## 3. a character vector of length 8
+## 4. a factor vector of length 8, with 3 different factor "levels"
 problem1_df=tibble(
   x= rnorm(8),
   vec_logic = x>0,
   vec_char = c("I'm", "a", "fan", "of", "pineapple", "on", "pizza",   "yum!"),
   vec_factor= c("high", "medium", "low", "low", "medium", "high", "medium", "medium")
 )
+````
+##taking mean of each variable in the data frame
+```` {r}
 #create variable
 number=pull(problem1_df, var=x)
 overzero=pull(problem1_df, var=vec_logic)
@@ -36,8 +41,9 @@ mean(levels)
 
 `````
 We can take the mean values of number, overzero, but not of characters or levels. 
+
+## using as.numeric function to the logical, character, and factor variables
 ```{r, eval=FALSE}
-#applying the as.numeric function to the logical, character, and factor variables
 as.numeric(overzero)
 as.numeric(characters)
 as.numeric(levels)
@@ -45,4 +51,18 @@ as.numeric(levels)
 ````
 This cannot turn into any of the logical, character, or factor vector.
 
-```
+## converting one variable to another
+```{r}
+#convert the logical vector to numeric, and multiple the random sample by the result
+y=number*as.numeric(overzero)
+y
+
+#convert the logical vector to a factor, and multiple the random sample by the result
+a=number*as.factor(overzero)
+a
+
+#convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
+b=number*as.numeric(as.factor(overzero))
+b
+```` 
+
