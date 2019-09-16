@@ -22,4 +22,15 @@ problem1_df=tibble(
   vec_char = c("I'm", "a", "fan", "of", "pineapple", "on", "pizza",   "yum!"),
   vec_factor= c("high", "medium", "low", "low", "medium", "high", "medium", "medium")
 )
+#create variable
+number=pull(problem1_df, var=x)
+overzero=pull(problem1_df, var=vec_logic)
+characters=pull(problem1_df, var=vec_char)
+levels=pull(problem1_df, var=vec_factor)
+
+#trying to find mean of each variable
+mean(number)
+mean(overzero)
+mean(characters)
+mean(levels)
 `````
