@@ -65,9 +65,9 @@ a
 b=number*as.numeric(as.factor(overzero))
 b
 ```` 
-#Problem 2
-##creating data frame of x and y
-````{r}
+# Problem 2
+## creating data frame of x and y
+````{r creating data frame}
 problem2_df=tibble(
   x=rnorm(500),
   y=rnorm(500),
@@ -75,5 +75,9 @@ problem2_df=tibble(
   a=as.numeric(vec_logic),
   b=as.factor(vec_logic)
 )
-```
+````
+## ` the size of the dataset (using nrow and ncol). * the mean, median, and standard deviation of x * the proportion of cases for which x+y>1 `
 
+```{r}
+ggplot(problem2_df, aes(x=x, y=y)) + geom_point()
+```
