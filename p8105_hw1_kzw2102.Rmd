@@ -21,7 +21,7 @@ library(tidyverse)
 problem1_df=tibble(
   x= rnorm(8),
   vec_logic = x>0,
-  vec_char = c("I'm", "a", "fan", "of", "pineapple", "on", "pizza",   "yum!"),
+  vec_char = c("I'm", "a", "fan", "of", "pineapple", "on", "pizza", "yum!"),
   vec_factor= c("high", "medium", "low", "low", "medium", "high", "medium", "medium")
 )
 ````
@@ -67,14 +67,13 @@ b
 ```` 
 #Problem 2
 ##creating data frame of x and y
-````{r create dataframe}
+````{r}
 problem2_df=tibble(
   x=rnorm(500),
   y=rnorm(500),
   vec_logic=x+y>1,
-  as.numeric(vec_logic),
-  as.factor(vec_logic)
+  a=as.numeric(vec_logic),
+  b=as.factor(vec_logic)
 )
 ```
-
 
