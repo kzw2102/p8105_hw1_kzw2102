@@ -76,18 +76,21 @@ problem2_df=tibble(
   factor1=as.factor(vec_logical)
 )
 ```
-In this data set, there are `r nrow(x)` rows (or number of subjects) and `r ncol(y)` columns, each denoting a different kind of variable. The mean of of our sample is `r mean(x) `, the median is ` r median(x)`, and the standard deviation is ` r sd(x)`.The proportion of cases for which x+y>1 is `length(which (vec_logical="True")/sum(x,y)`.
+In this data set, there are `r nrow(problem2_df)` rows (or number of subjects) and `r ncol(problem2_df)` columns, each denoting a different kind of variable. 
+
+
+The mean of of our sample is `r mean(pull(problem2_df,x))`, the median is `r median(pull(problem2_df,x))`, and the standard deviation is `r sd(pull(problem2_df, x))`.
+
+The proportion of cases for which x+y>1 is `sum(pull(problem2_df, numeric1)/nrow(problem2_df)`.
 
 ## scatterplots
 ```{r}
 #scatterplot of the logic variables
-ggplot(problem2_df, aes(x=x, y=y, color=vec_logic)) + geom_point()
-
-#scatterplot of numeric variable
-ggplot(problem2_df, aes(x=x, y=y, color=a)) + geom_point()
-#scatterplot of factor variables
-ggplot(problem2_df, aes(x=x, y=y, color=b)) + geom_point()
-
+ggplot(problem2_df, aes(x=x, y=y, color=vec_logical)) + geom_point()
 #saving ggplot with ggsave
-ggsave("plot.png", width=5, height=5)
+ggsave("plot1.png", width=5, height=5)
+#scatterplot of numeric variable
+ggplot(problem2_df, aes(x=x, y=y, color=numeric1)) + geom_point()
+#scatterplot of factor variables
+ggplot(problem2_df, aes(x=x, y=y, color=factor1)) + geom_point()
 ```
