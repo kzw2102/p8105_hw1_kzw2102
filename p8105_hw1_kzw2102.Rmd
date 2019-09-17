@@ -1,7 +1,7 @@
 ---
 title: "Homework 1"
 author: "Kelly Wang"
-date: 2019-09-15
+date: 2019-09-17
 output: github_document
 ---
 
@@ -13,11 +13,11 @@ library(tidyverse)
 # Problem 1
 
 ## creating the data frame
-````{r}
-## 1.creating a random sample of size 8 from a standard normal distribution
-## 2.a logical vector indicating whether elements of the sample are greater than 0
-## 3.a character vector of length 8
-## 4.a factor vector of length 8, with 3 different factor "levels"
+````{r problem1_chunk}
+# 1.creating a random sample of size 8 from a standard normal distribution
+# 2.a logical vector indicating whether elements of the sample are greater than 0
+# 3.a character vector of length 8
+# 4.a factor vector of length 8, with 3 different factor "levels"
 problem1_df=tibble(
   number= rnorm(8),
   vec_logic = number>0,
@@ -43,7 +43,7 @@ mean(levels)
 We can take the mean values of number, overzero, but not of characters or levels. 
 
 ## using as.numeric function to the logical, character, and factor variables
-```{r, eval=FALSE}
+```{r asnumerica_chunk, eval=FALSE}
 as.numeric(overzero)
 as.numeric(characters)
 as.numeric(levels)
@@ -67,7 +67,7 @@ b
 ```` 
 # Problem 2
 ## creating data frame of x and y
-```{r}
+```{r problem2_chunk}
 problem2_df=tibble(
   x=rnorm(500),
   y=rnorm(500),
