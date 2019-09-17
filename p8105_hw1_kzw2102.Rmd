@@ -65,4 +65,16 @@ a
 b=number*as.numeric(as.factor(overzero))
 b
 ```` 
+#Problem 2
+##creating data frame of x and y
+````{r create dataframe}
+problem2_df=tibble(
+  x=rnorm(500),
+  y=rnorm(500),
+  vec_logic=x+y>1,
+  as.numeric(vec_logic),
+  as.factor(vec_logic)
+)
+```
+
 
