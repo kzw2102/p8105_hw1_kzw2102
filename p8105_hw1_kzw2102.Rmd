@@ -8,12 +8,12 @@ output: github_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-````
+```
 
 # Problem 1
 
 ## creating the data frame
-`````{r create dataframe}
+````{r create data frame}
 ## 1.creating a random sample of size 8 from a standard normal distribution
 ## 2. a logical vector indicating whether elements of the sample are greater than 0
 ## 3. a character vector of length 8
@@ -76,8 +76,15 @@ problem2_df=tibble(
   b=as.factor(vec_logic)
 )
 ````
-## ` the size of the dataset (using nrow and ncol). * the mean, median, and standard deviation of x * the proportion of cases for which x+y>1 `
+In this data set, there are `<(nrow)>` rows (or number of subjects) and `<(ncol)>` columns, each denoting a different kind of variable. The mean of of our sample is `<mean(x)>`, the median is `<median(x)>`, and the standard deviation is `<sd(x)>`.  The proportion of cases for which x+y>1 is `(x+y>1)/(x+y)`.
 
+## scatterplots
 ```{r}
-ggplot(problem2_df, aes(x=x, y=y)) + geom_point()
+#scatterplot of the logic variables
+ggplot(problem2_df, aes(x=x, y=y, color=vec_logic)) + geom_point()
+
+#scatterplot of numeric variable
+ggplot(problem2_df, aes(x=x, y=y, color=a)) + geom_point()
+#scatterplot of factor variables
+ggplot(problem2_df, aes(x=x, y=y, color=b)) + geom_point()
 ```
