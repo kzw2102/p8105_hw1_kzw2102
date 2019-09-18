@@ -71,11 +71,12 @@ We can see that because the logical vector is turned into numeric, we are able t
 # Problem 2
 ## Creating data frame of x and y
 We have created a dataframe comprised of the following:
-x: a random sample of size 500 from a standard Normal distribution;
-y: a random sample of size 500 from a standard Normal distribution;
-A logical vector indicating wehther x+y>1;
-A numeric vector created by coercing the above logical vector;
-A factor vector created by coercing the above logical vector
+
+* x: a random sample of size 500 from a standard Normal distribution
+* y: a random sample of size 500 from a standard Normal distribution;
+* A logical vector indicating wehther x+y>1;
+* A numeric vector created by coercing the above logical vector;
+* A factor vector created by coercing the above logical vector
 ```{r problem2_chunk}
 problem2_df=tibble(
   x=rnorm(500),
