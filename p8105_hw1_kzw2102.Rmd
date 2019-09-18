@@ -5,14 +5,13 @@ date: 2019-09-17
 output: github_document
 ---
 
-
 ```{r setup, include=FALSE}
 library(tidyverse)
 ```
 
 # Problem 1
 
-## creating the data frame
+## Creating the data frame
 ````{r problem1_chunk}
 # 1.creating a random sample of size 8 from a standard normal distribution
 # 2.a logical vector indicating whether elements of the sample are greater than 0
@@ -22,10 +21,10 @@ problem1_df=tibble(
   number= rnorm(8),
   vec_logic = number>0,
   vec_char = c("I'm", "a", "fan", "of", "pineapple", "on", "pizza", "yum!"),
-  vec_factor= factor(c("high", "medium", "low", "low", "medium", "high", "medium", "medium"))
+  vec_factor= factor(c("level1", "level2", "level3", "level3", "level1", "level2", "level3", "level1"))
 )
 ````
-## taking mean of each variable in the data frame
+## Taking mean of each variable in the data frame
 ```` {r}
 #create variable
 number=pull(problem1_df, var=number)
@@ -40,18 +39,19 @@ mean(characters)
 mean(levels)
 
 `````
-We can take the mean values of number, overzero, but not of characters or levels. 
+First we create different variables that are assigned to each vector. I labeled the random sample to be the variable "number", the logical vector to be "overzero", the character vector to be named "characters", and the factor vector to be labeled "levels." After tkaing the mean of each variable/vector, it can be concluded that we can take the mean values of "number" and "overzero", but not of "characters" or "levels". 
 
-## using as.numeric function to the logical, character, and factor variables
-```{r asnumerica_chunk, eval=FALSE}
+## Using as.numeric function to the logical, character, and factor variables
+```{r asnumeric_chunk, eval=FALSE}
 as.numeric(overzero)
 as.numeric(characters)
 as.numeric(levels)
 
 ````
-This cannot turn into any of the logical, character, or factor vector.
+Although I am not displaying the output, the results show that the as.numeric function does not work for character vectors. It does, however, work for logical and level vectors. This is because logical vecotrs code this by either 0 or 1, whether factors convert the texts to 1, 2, 3....
 
-## converting one variable to another
+I included the statement eval=False in order to hide the output, but to just display the code. 
+## Converting one variable to another
 ```{r}
 #convert the logical vector to numeric, and multiple the random sample by the result
 c=number*as.numeric(overzero)
@@ -65,32 +65,49 @@ a
 b=number*as.numeric(as.factor(overzero))
 b
 ```` 
+We can see that because the logical vector is turned into numeric, we are able to multiple the results by a numeric value. However, converting the logical vector to factor and then multiplying the result by the random result results in a not meaningful result/not possible result. Though, if we were to convert the logical vector to a factor and then convert the result to numeric, and multiple the random sample by the result, it would provide a valid answer since it is two numeric values being multiplied together. 
+
+
 # Problem 2
-## creating data frame of x and y
+## Creating data frame of x and y
+We have created a dataframe comprised of the following:
+x: a random sample of size 500 from a standard Normal distribution
+y: a random sample of size 500 from a standard Normal distribution
+A logical vector indicating wehther x+y>1
+A numeric vector created by coercing the above logical vector
+A factor vector created by coercing the above logical vector
 ```{r problem2_chunk}
 problem2_df=tibble(
   x=rnorm(500),
   y=rnorm(500),
-  vec_logical=(x+y)>1,
-  numeric1=as.numeric(vec_logical),
-  factor1=as.factor(vec_logical)
+  vec_logic_1=(x+y)>1,
+  numeric1=as.numeric(vec_logic_1),
+  factor1=as.factor(vec_logic_1)
 )
 ```
-In this data set, there are `r nrow(problem2_df)` rows (or number of subjects) and `r ncol(problem2_df)` columns, each denoting a different kind of variable. 
 
+### Description of your vecotr using inline R
+In this data set, there are `r nrow(problem2_df)` rows (or number of subjects) and `r ncol(problem2_df)` columns, each denoting a different kind of variable. 
 
 The mean of of our sample is `r mean(pull(problem2_df,x))`, the median is `r median(pull(problem2_df,x))`, and the standard deviation is `r sd(pull(problem2_df, x))`.
 
 The proportion of cases for which x+y>1 is `r sum(pull(problem2_df, numeric1))/nrow(problem2_df)`.
 
-## scatterplots
+## Scatterplots
 ```{r}
 #scatterplot of the logic variables
-ggplot(problem2_df, aes(x=x, y=y, color=vec_logical)) + geom_point()
+ggplot(problem2_df, aes(x=x, y=y, color=vec_logic_1)) + geom_point()
 #saving ggplot with ggsave
 ggsave("plot1.png", width=5, height=5)
+```
+The first scatterplot displayed here shows the spread of the random sample stratified by points that are x+y>1 and points that are x+y<=1. I have exported the scatterplot into the project folder under the filename "plot1.png". 
+```{r}
 #scatterplot of numeric variable
 ggplot(problem2_df, aes(x=x, y=y, color=numeric1)) + geom_point()
+```
+The second scatterplot displayed here shows the spread of the random sample stratified by points by their numeric values. We can see here that the values range from 0 to 1, since the choices are either true or false. 
+```{r}
 #scatterplot of factor variables
 ggplot(problem2_df, aes(x=x, y=y, color=factor1)) + geom_point()
 ```
+The third scatterplot displayed here shows the spread of the random sample stratified by different levels (true or false). 
